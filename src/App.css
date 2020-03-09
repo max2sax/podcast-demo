@@ -18,6 +18,12 @@
   color: white;
 }
 
+.media-player {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    justify-content: left;
+}
 .App-link {
   color: #61dafb;
 }

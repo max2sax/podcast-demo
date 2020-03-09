@@ -26,13 +26,13 @@ const useStyles = makeStyles({
 export default function PodcastList(props) {
     // expects an array of podcast objects as props
     const classes = useStyles();
-  const [open, setOpen] = React.useState(() => {
-    let initialState = {};
-    props.podcasts.forEach((podcast) => {
-      initialState[podcast.ID] = false;
+    const [open, setOpen] = React.useState(() => {
+      let initialState = {};
+      props.podcasts.forEach((podcast) => {
+        initialState[podcast.ID] = false;
+      });
+      return initialState;
     });
-    return initialState;
-  });
 
     const handleClick = (e) => {
       setOpen((prevState) => {
@@ -41,15 +41,29 @@ export default function PodcastList(props) {
         const updatedState = {...prevState, ...newState};
         return updatedState;
       });
-        if (props.podcastSelected) {
-            props.podcastSelected(e.currentTarget.id);
+        if (props.updateSelectedPodcast) {
+            props.updateSelectedPodcast(e.currentTarget.id);
         }
     };
 
+    const handleEpisodeItemClick = (e) => {
+      if (props.updateSelectedEpisode) {
+        props.updateSelectedEpisode(e.currentTarget.id);
+      }
+    }
+
     const listItems = props.podcasts.map((podcast) => {
-      const episodes = podcast.Episodes.map((episode) => {
+      let episodes = Object.values(props.episodes).filter((ep) => {
+        return ep.PodcastID === podcast.ID;
+      });
+      episodes = episodes.map((episode) => {
         return (
-        <ListItem key={episode.ID} className={classes.CollapsedListStyle}>
+        <ListItem button
+          id={episode.ID}
+          key={episode.ID}
+          onClick={handleEpisodeItemClick}
+          className={classes.CollapsedListStyle}
+        >
           <ListItemText primary={episode.Name} />
         </ListItem>
         )
@@ -57,6 +71,7 @@ export default function PodcastList(props) {
       return (
         <div
           className={classes.PodcastContainerStyle}
+          key={podcast.ID}
         >
         <ListItem button
           key={podcast.ID}
