@@ -10,7 +10,8 @@ import SearchIcon from '@material-ui/icons/Search';
 //         // text area with magnifying glass icon:k
 //     };
 // }
-// try with hooks:
+// todo: add hooks for state
+// - state will store search results that display a list of auto complete
 export default function SearchBar() {
 
     return (
