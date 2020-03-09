@@ -2,6 +2,22 @@ A react podcast app.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The suggested method to run the app is to use a docker container. The following steps should be sufficient to get it set up:
+* docker pull node
+* docker run -it -p 3000:3000 node /bin/bash
+* clone this repository
+* cd into this repository
+* install dependencies - npm install
+* start the app - yarn start
+
+This is a bare bones demo app. All the data is hand crafted.
+You can click on a podcast to display the available episodes and show the artwork.
+You can click an episode to load it into the player.
+You can play the podcast in the player.
+
+That's about it. Enjoy!
+The below content it provided by the tutorial and is left unchanged.
+
 ## Available Scripts
 
 In the project directory, you can run:
