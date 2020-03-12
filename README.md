@@ -9,7 +9,10 @@ The suggested method to run the app is to use a docker container. The following 
 * cd into this repository
 * install dependencies - npm install
 * start the app - yarn start
+* navigate to localhost:3000 in a browser to view
 
+Notes:
+This has been tested on chrome and docker on a windows 10 machine.
 This is a bare bones demo app. All the data is hand crafted.
 You can click on a podcast to display the available episodes and show the artwork.
 You can click an episode to load it into the player.
